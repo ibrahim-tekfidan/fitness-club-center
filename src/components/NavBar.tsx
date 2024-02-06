@@ -1,5 +1,6 @@
 import { Box, HStack, Image, Text } from '@chakra-ui/react';
 import logo from '../assets/images/Logo3.png';
+import ColorModeSwitch from './ColorModeSwitch';
 
 const NavBar = () => {
   return (
@@ -10,7 +11,7 @@ const NavBar = () => {
       <HStack spacing={'50px'}>
         <Text>Link1</Text>
         <Text>Link2</Text>
-        <Text>Color Switch</Text>
+        <ColorModeSwitch />
       </HStack>
     </HStack>
   );
