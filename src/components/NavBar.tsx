@@ -1,11 +1,11 @@
 import { Box, HStack, Image, Text } from '@chakra-ui/react';
-import logo from '../assets/images/Logo.png';
+import logo from '../assets/images/Logo3.png';
 
 const NavBar = () => {
   return (
-    <HStack justifyContent={'space-between'} padding={'20px'}>
+    <HStack justifyContent={'space-between'} padding={'20px 40px'}>
       <Box>
-        <Image src={logo} />
+        <Image borderRadius={'10px'} width={'80px'} src={logo} />
       </Box>
       <HStack spacing={'50px'}>
         <Text>Link1</Text>
