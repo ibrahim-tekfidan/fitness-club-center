@@ -6,7 +6,11 @@ const NavBar = () => {
   return (
     <HStack justifyContent={['space-around', 'space-between']}>
       <Box>
-        <Image borderRadius={'10px'} width={'80px'} src={logo} />
+        <Image
+          borderRadius={'10px'}
+          width={['64px', '80px', '96px']}
+          src={logo}
+        />
       </Box>
       <HStack spacing={['16px', '20pX', '32px', '58px']}>
         <Text>Home</Text>

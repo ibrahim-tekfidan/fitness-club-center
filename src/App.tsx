@@ -1,6 +1,7 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero';
+import SearchInput from './components/SearchInput';
 
 const App = () => {
   return (
@@ -11,13 +12,22 @@ const App = () => {
       gridTemplateColumns={{
         base: '1fr',
       }}
-      paddingX={['16px', '20px', '24px', '32px']}
     >
-      <GridItem paddingY={'20px'} area={'nav'}>
+      <GridItem
+        paddingX={['16px', '20px', '24px', '32px']}
+        boxShadow={'lg'}
+        paddingY={['12px', '16px', '20px']}
+        area={'nav'}
+      >
         <NavBar />
       </GridItem>
-      <GridItem mt={['32px', '32px', '48px']} area={'main'}>
+      <GridItem
+        paddingX={['16px', '20px', '24px', '32px']}
+        mt={['32px', '32px', '48px']}
+        area={'main'}
+      >
         <Hero />
+        <SearchInput />
       </GridItem>
       <GridItem area={'footer'}>Footer</GridItem>
     </Grid>
