@@ -14,8 +14,8 @@ const Hero = () => {
     <SimpleGrid alignItems={'center'} columns={[1, 1, 2, 2]}>
       <Box textAlign={{ base: 'center', md: 'left' }}>
         <Heading
-          mb={['16px', '20px', '32px', '32px']}
-          fontSize={['xl', '3xl', '4xl', '6xl']}
+          mb={['16px', '20px', '24px', '32px']}
+          fontSize={['xl', '3xl', '4xl', '5xl']}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </Heading>
@@ -26,7 +26,7 @@ const Hero = () => {
           eveniet facere?
         </Text>
         <Button
-          mt={['24px', '24px', '40px', '64px']}
+          mt={['24px', '24px', '48px', '64px']}
           mb={{ base: '48px', md: '0' }}
           size={['sm', 'sm', 'md', 'lg']}
         >
@@ -36,7 +36,7 @@ const Hero = () => {
       <Center>
         <Image
           borderRadius={'10px'}
-          width={['50%', '50%', '80%', '60%']}
+          width={['50%', '50%', '80%', '70%']}
           src={logo}
         />
       </Center>

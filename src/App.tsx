@@ -11,7 +11,7 @@ const App = () => {
       gridTemplateColumns={{
         base: '1fr',
       }}
-      paddingX={'32px'}
+      paddingX={['16px', '20px', '24px', '32px']}
     >
       <GridItem paddingY={'20px'} area={'nav'}>
         <NavBar />

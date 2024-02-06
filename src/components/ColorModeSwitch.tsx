@@ -1,4 +1,4 @@
-import { Text, HStack, IconButton, useColorMode } from '@chakra-ui/react';
+import { Text, HStack, IconButton, useColorMode, Show } from '@chakra-ui/react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 const ColorModeSwitch = () => {
@@ -11,9 +11,11 @@ const ColorModeSwitch = () => {
         fontSize={'20px'}
         aria-label={'Toggle color mode'}
       />
-      <Text fontWeight={600}>
-        {colorMode === 'dark' ? 'Light' : 'Dark'} Mode
-      </Text>
+      <Show above="md">
+        <Text whiteSpace={'nowrap'} fontWeight={600}>
+          {colorMode === 'dark' ? 'Light' : 'Dark'} Mode
+        </Text>
+      </Show>
     </HStack>
   );
 };
