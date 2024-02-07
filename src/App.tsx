@@ -2,6 +2,7 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import SearchInput from './components/SearchInput';
+import ExerciseGrid from './components/ExerciseGrid';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
       >
         <Hero />
         <SearchInput />
+        <ExerciseGrid />
       </GridItem>
       <GridItem area={'footer'}>Footer</GridItem>
     </Grid>
