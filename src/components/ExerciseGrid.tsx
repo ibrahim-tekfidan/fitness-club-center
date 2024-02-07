@@ -1,21 +1,16 @@
-import { SimpleGrid, Text } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import apiClient from '../services/api-client';
+import { Text, SimpleGrid, Center } from '@chakra-ui/react';
 import ExerciseCard from './ExerciseCard';
-
-export interface Exercise {
-  id: number;
-  name: string;
-  bodyPart: string;
-  gifUrl: string;
-  target: string;
-}
+import useExercises from '../hooks/useExercises';
 
 const ExerciseGrid = () => {
-  const [exercises, setExercises] = useState<Exercise[]>([]);
-  useEffect(() => {
-    apiClient.get<Exercise[]>('').then(res => setExercises(res.data));
-  }, []);
+  const { exercises, error } = useExercises();
+
+  if (error)
+    return (
+      <Center>
+        <Text fontSize={['lg', 'xl', '2xl']}>{error}</Text>
+      </Center>
+    );
 
   return (
     <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={[4, 6, 8, 10]}>

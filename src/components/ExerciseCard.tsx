@@ -7,7 +7,7 @@ import {
   Badge,
   Divider,
 } from '@chakra-ui/react';
-import { Exercise } from './ExerciseGrid';
+import { Exercise } from '../hooks/useExercises';
 
 interface Props {
   exercise: Exercise;
