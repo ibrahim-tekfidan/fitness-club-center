@@ -4,6 +4,11 @@ const config: ThemeConfig = {
   initialColorMode: 'dark',
 };
 
-const theme = extendTheme({ config });
+const theme = extendTheme({
+  config,
+  colors: {
+    white: '#f7f7f7',
+  },
+});
 
 export default theme;

@@ -13,8 +13,8 @@ const NavBar = () => {
         />
       </Box>
       <HStack spacing={['16px', '20pX', '32px', '58px']}>
-        <Text>Home</Text>
-        <Text>Exercise</Text>
+        <Text fontWeight={600}>Home</Text>
+        <Text fontWeight={600}>Exercise</Text>
         <ColorModeSwitch />
       </HStack>
     </HStack>

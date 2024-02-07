@@ -16,8 +16,8 @@ const App = () => {
     >
       <GridItem
         paddingX={['16px', '20px', '24px', '32px']}
-        boxShadow={'lg'}
-        paddingY={['12px', '16px', '20px']}
+        boxShadow={'md'}
+        paddingY={['12px', '16px']}
         area={'nav'}
       >
         <NavBar />

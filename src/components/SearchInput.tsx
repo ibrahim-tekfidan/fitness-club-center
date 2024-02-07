@@ -40,6 +40,7 @@ const SearchInput = () => {
               <BsSearch />
             </InputLeftElement>
             <Input
+              colorScheme="blue"
               ref={searchRef}
               variant={'filled'}
               size={{ base: 'md', lg: 'lg' }}
@@ -47,7 +48,11 @@ const SearchInput = () => {
               placeholder="Search Exercise"
             />
           </InputGroup>
-          <Button type="submit" size={['sm', 'md', 'md', 'lg']}>
+          <Button
+            colorScheme="blue"
+            type="submit"
+            size={['sm', 'md', 'md', 'lg']}
+          >
             Search
           </Button>
         </HStack>

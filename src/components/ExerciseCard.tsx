@@ -20,8 +20,9 @@ const ExerciseCard = ({ exercise }: Props) => {
       _hover={{
         transform: 'scale(1.03)',
         transition: 'transform .15s ease-in',
+        boxShadow: 'lg',
       }}
-      boxShadow={'lg'}
+      boxShadow={'md'}
       borderRadius={10}
       overflow={'hidden'}
     >
@@ -29,14 +30,20 @@ const ExerciseCard = ({ exercise }: Props) => {
       <Divider />
       <CardBody>
         <HStack>
-          <Badge mb={[1, 2, 3]} colorScheme="red">
+          <Badge paddingX={2} borderRadius={6} mb={[1, 2, 3]} colorScheme="red">
             {exercise.target}
           </Badge>
-          <Badge mb={[1, 2, 3]} colorScheme="blue">
+          <Badge
+            paddingX={2}
+            borderRadius={6}
+            mb={[1, 2, 3]}
+            colorScheme="blue"
+          >
             {exercise.bodyPart}
           </Badge>
         </HStack>
         <Heading
+          paddingTop={2}
           textTransform={'uppercase'}
           fontSize={['lg', 'lg', 'xl', 'xl']}
         >
