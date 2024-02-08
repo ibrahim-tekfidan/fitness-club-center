@@ -1,20 +1,20 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import useExercises from '../hooks/useExercises';
+import useExerciseQueryStroe from '../store';
 import ErrorMessage from './ErrorMessage';
 import ExerciseCard from './ExerciseCard';
-import useExerciseQueryStroe from '../store';
 
 const ExerciseGrid = () => {
-  const exerciseQuery = useExerciseQueryStroe(s => s.exerciseQuery);
-  const { data: exercises, error } = useExercises(exerciseQuery);
+  const searchText = useExerciseQueryStroe(s => s.exerciseQuery.searchText);
+  const { data: exercises, error, isLoading } = useExercises();
 
-  if (error) return <ErrorMessage>{error}</ErrorMessage>;
+  if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
-  if (exercises.length === 0 && exerciseQuery.searchText?.length !== 0)
+  if (exercises?.length === 0 && searchText?.length !== 0)
     return (
       <ErrorMessage>
-        No results found for '{exerciseQuery.searchText}' 😔. Please make sure
-        you entered the exercise name correctly 🥳.
+        No results found for '{searchText}' 😔. Please make sure you entered the
+        exercise name correctly 🥳.
       </ErrorMessage>
     );
 

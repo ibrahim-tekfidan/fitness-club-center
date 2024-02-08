@@ -1,5 +1,15 @@
-import useData from './useData';
+import { useQuery } from '@tanstack/react-query';
+import apiClient from '../services/api-client';
+import bodyParts from '../data/bodyParts';
 
-const useBodyParts = () => useData<string>('/bodyPartList');
+const useBodyParts = () => {
+  return useQuery<string[]>({
+    queryKey: ['bodyParts'],
+    queryFn: () =>
+      apiClient.get<string[]>('/bodyPartList').then(res => res.data),
+    staleTime: 24 * 60 * 60 * 1000, //24h
+    initialData: bodyParts,
+  });
+};
 
 export default useBodyParts;

@@ -1,10 +1,10 @@
 import { Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
-import equipments from '../data/Equipments';
 import useExerciseQueryStroe from '../store';
+import useEquipments from '../hooks/useEquipments';
 
 const EquipmentSelector = () => {
-  // const { data: equipments } = useEquipments();
+  const { data: equipments } = useEquipments();
   const equipment = useExerciseQueryStroe(s => s.exerciseQuery.equipment);
   const setEquipment = useExerciseQueryStroe(s => s.setEquipment);
 
@@ -19,7 +19,7 @@ const EquipmentSelector = () => {
         {equipment || 'Equipment'}
       </MenuButton>
       <MenuList>
-        {equipments.map(equipment => (
+        {equipments?.map(equipment => (
           <MenuItem onClick={() => setEquipment(equipment)} key={equipment}>
             {equipment.toUpperCase()}
           </MenuItem>
