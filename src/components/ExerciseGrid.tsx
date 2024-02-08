@@ -1,6 +1,7 @@
 import { Text, SimpleGrid, Center, Box } from '@chakra-ui/react';
 import ExerciseCard from './ExerciseCard';
 import useExercises from '../hooks/useExercises';
+import ErrorMessage from './ErrorMessage';
 
 interface Props {
   selectedBodyPart: string;
@@ -19,21 +20,14 @@ const ExerciseGrid = ({
     searchText
   );
 
-  if (error)
-    return (
-      <Center>
-        <Text fontSize={['lg', 'xl', '2xl']}>{error}</Text>
-      </Center>
-    );
+  if (error) return;
 
   if (exercises.length === 0)
     return (
-      <Center>
-        <Text fontSize={['lg', 'xl', '2xl']}>
-          No results found for '{searchText}' 😔. Please make sure you entered
-          the exercise name correctly 🥳.
-        </Text>
-      </Center>
+      <ErrorMessage>
+        No results found for '{searchText}' 😔. Please make sure you entered the
+        exercise name correctly 🥳.
+      </ErrorMessage>
     );
 
   return (
