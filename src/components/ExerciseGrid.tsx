@@ -1,19 +1,16 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { ExerciseQuery } from '../App';
 import useExercises from '../hooks/useExercises';
 import ErrorMessage from './ErrorMessage';
 import ExerciseCard from './ExerciseCard';
+import useExerciseQueryStroe from '../store';
 
-interface Props {
-  exerciseQuery: ExerciseQuery;
-}
-
-const ExerciseGrid = ({ exerciseQuery }: Props) => {
+const ExerciseGrid = () => {
+  const exerciseQuery = useExerciseQueryStroe(s => s.exerciseQuery);
   const { data: exercises, error } = useExercises(exerciseQuery);
 
-  if (error) return;
+  if (error) return <ErrorMessage>{error}</ErrorMessage>;
 
-  if (exercises.length === 0)
+  if (exercises.length === 0 && exerciseQuery.searchText?.length !== 0)
     return (
       <ErrorMessage>
         No results found for '{exerciseQuery.searchText}' 😔. Please make sure

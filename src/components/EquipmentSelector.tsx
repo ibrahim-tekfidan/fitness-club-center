@@ -1,14 +1,13 @@
 import { Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
 import equipments from '../data/Equipments';
+import useExerciseQueryStroe from '../store';
 
-interface Props {
-  selectedEquipment: string | null;
-  onEquipment: (equipment: string) => void;
-}
-
-const EquipmentSelector = ({ onEquipment, selectedEquipment }: Props) => {
+const EquipmentSelector = () => {
   // const { data: equipments } = useEquipments();
+  const equipment = useExerciseQueryStroe(s => s.exerciseQuery.equipment);
+  const setEquipment = useExerciseQueryStroe(s => s.setEquipment);
+
   return (
     <Menu>
       <MenuButton
@@ -17,11 +16,11 @@ const EquipmentSelector = ({ onEquipment, selectedEquipment }: Props) => {
         as={Button}
         rightIcon={<BsChevronDown />}
       >
-        {selectedEquipment || 'Equipment'}
+        {equipment || 'Equipment'}
       </MenuButton>
       <MenuList>
         {equipments.map(equipment => (
-          <MenuItem onClick={() => onEquipment(equipment)} key={equipment}>
+          <MenuItem onClick={() => setEquipment(equipment)} key={equipment}>
             {equipment.toUpperCase()}
           </MenuItem>
         ))}

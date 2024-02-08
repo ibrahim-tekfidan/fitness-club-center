@@ -1,4 +1,4 @@
-import { ExerciseQuery } from '../App';
+import { ExerciseQuery } from '../store';
 import useData from './useData';
 
 export interface Exercise {
@@ -9,21 +9,12 @@ export interface Exercise {
   target: string;
 }
 
-const useExercises = ({
-  selectedBodyPart,
-  selectedEquipment,
-  searchText,
-}: ExerciseQuery) => {
-  if (selectedBodyPart)
-    return useData<Exercise>(`/bodyPart/${selectedBodyPart}`, selectedBodyPart);
-  if (selectedEquipment)
-    return useData<Exercise>(
-      `/equipment/${selectedEquipment}`,
-      selectedEquipment
-    );
+const useExercises = ({ bodyPart, equipment, searchText }: ExerciseQuery) => {
+  if (bodyPart) return useData<Exercise>(`/bodyPart/${bodyPart}`, bodyPart);
+  if (equipment) return useData<Exercise>(`/equipment/${equipment}`, equipment);
   if (searchText) return useData<Exercise>(`/name/${searchText}`, searchText);
 
-  return useData<Exercise>('', selectedBodyPart);
+  return useData<Exercise>('', bodyPart);
 };
 
 export default useExercises;

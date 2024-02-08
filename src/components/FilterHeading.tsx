@@ -1,30 +1,26 @@
-import { Heading, useColorMode } from '@chakra-ui/react';
-import { ExerciseQuery } from '../App';
+import { Heading } from '@chakra-ui/react';
+import useExerciseQueryStroe from '../store';
 
-interface Props {
-  exerciseQuery: ExerciseQuery;
-}
+const FilterHeading = () => {
+  const { bodyPart, equipment, searchText } = useExerciseQueryStroe(
+    s => s.exerciseQuery
+  );
 
-const FilterHeading = ({ exerciseQuery }: Props) => {
-  const { colorMode } = useColorMode();
-  const { selectedBodyPart, selectedEquipment, searchText } = exerciseQuery;
+  const filterHeading = (bodyPart || equipment || searchText)?.toUpperCase();
 
-  const filterHeading = (
-    selectedBodyPart ||
-    selectedEquipment ||
-    searchText
-  )?.toUpperCase();
-
-  if (Object.keys(exerciseQuery).length !== 0)
-    return (
-      <Heading
-        fontSize={['lg', 'lg', 'xl', '2xl']}
-        bgGradient={'linear(to-r, #2B6CB0, #90CDF4)'}
-        bgClip="text"
-      >
-        Filtered by: {filterHeading}
-      </Heading>
-    );
+  return (
+    <>
+      {filterHeading && (
+        <Heading
+          fontSize={['lg', 'lg', 'xl', '2xl']}
+          bgGradient={'linear(to-r, #2B6CB0, #90CDF4)'}
+          bgClip="text"
+        >
+          Filtered by: {filterHeading}
+        </Heading>
+      )}
+    </>
+  );
 };
 
 export default FilterHeading;

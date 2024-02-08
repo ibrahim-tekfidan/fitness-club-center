@@ -1,24 +1,14 @@
-import { Button, Grid, GridItem, HStack, Stack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Grid, GridItem, Stack } from '@chakra-ui/react';
 import BodyPartSelector from './components/BodyPartSelector';
 import EquipmentSelector from './components/EquipmentSelector';
 import ExerciseGrid from './components/ExerciseGrid';
+import FilterHeading from './components/FilterHeading';
 import Hero from './components/Hero';
 import NavBar from './components/NavBar';
+import ResetFilters from './components/ResetFilters';
 import SearchInput from './components/SearchInput';
-import FilterHeading from './components/FilterHeading';
-
-export interface ExerciseQuery {
-  selectedBodyPart: string | null;
-  selectedEquipment: string | null;
-  searchText: string | null;
-}
 
 const App = () => {
-  const [exerciseQuery, setExerciseQuery] = useState<ExerciseQuery>(
-    {} as ExerciseQuery
-  );
-
   return (
     <Grid
       templateAreas={{
@@ -42,16 +32,8 @@ const App = () => {
         area={'main'}
       >
         <Hero />
-        <SearchInput
-          onSearchText={searchText =>
-            setExerciseQuery({
-              selectedBodyPart: '',
-              selectedEquipment: '',
-              searchText,
-            })
-          }
-        />
-        <FilterHeading exerciseQuery={exerciseQuery} />
+        <SearchInput />
+        <FilterHeading />
         <Stack
           marginTop={[1, 2, 3, 4]}
           display={'flex'}
@@ -59,41 +41,11 @@ const App = () => {
           spacing={{ base: 2, md: 4 }}
           mb={[3, 4, 5, 5]}
         >
-          <BodyPartSelector
-            selectedBodyPart={exerciseQuery?.selectedBodyPart}
-            onBodyPart={selectedBodyPart =>
-              setExerciseQuery({
-                selectedBodyPart,
-                selectedEquipment: '',
-                searchText: '',
-              })
-            }
-          />
-          <EquipmentSelector
-            onEquipment={selectedEquipment =>
-              setExerciseQuery({
-                selectedBodyPart: '',
-                selectedEquipment,
-                searchText: '',
-              })
-            }
-            selectedEquipment={exerciseQuery.selectedEquipment}
-          />
-          <Button
-            colorScheme="blue"
-            size={{ base: 'md', lg: 'lg' }}
-            onClick={() =>
-              setExerciseQuery({
-                selectedBodyPart: '',
-                selectedEquipment: '',
-                searchText: '',
-              })
-            }
-          >
-            Reset Filter
-          </Button>
+          <BodyPartSelector />
+          <EquipmentSelector />
+          <ResetFilters />
         </Stack>
-        <ExerciseGrid exerciseQuery={exerciseQuery} />
+        <ExerciseGrid />
       </GridItem>
       <GridItem area={'footer'}>Footer</GridItem>
     </Grid>

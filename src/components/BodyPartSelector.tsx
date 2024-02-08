@@ -1,14 +1,12 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
 import bodyParts from '../data/bodyParts';
+import useExerciseQueryStroe from '../store';
 
-interface Props {
-  onBodyPart: (bodyPart: string) => void;
-  selectedBodyPart: string | null;
-}
-
-const BodyPartSelector = ({ onBodyPart, selectedBodyPart }: Props) => {
+const BodyPartSelector = () => {
   // const { data: bodyParts, error } = useBodyParts();
+  const bodyPart = useExerciseQueryStroe(s => s.exerciseQuery.bodyPart);
+  const setBodyPart = useExerciseQueryStroe(s => s.setBodyPart);
 
   return (
     <Menu>
@@ -18,11 +16,11 @@ const BodyPartSelector = ({ onBodyPart, selectedBodyPart }: Props) => {
         as={Button}
         rightIcon={<BsChevronDown />}
       >
-        {selectedBodyPart?.toUpperCase() || 'Body Part'}
+        {bodyPart?.toUpperCase() || 'Body Part'}
       </MenuButton>
       <MenuList>
         {bodyParts.map(bodyPart => (
-          <MenuItem onClick={() => onBodyPart(bodyPart)} key={bodyPart}>
+          <MenuItem onClick={() => setBodyPart(bodyPart)} key={bodyPart}>
             {bodyPart.toUpperCase()}
           </MenuItem>
         ))}

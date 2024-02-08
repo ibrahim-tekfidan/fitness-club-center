@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-import { BsSearch } from 'react-icons/bs';
 import {
   Box,
   Button,
@@ -8,15 +6,13 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  useColorMode,
 } from '@chakra-ui/react';
+import { useRef } from 'react';
+import { BsSearch } from 'react-icons/bs';
+import useExerciseQueryStroe from '../store';
 
-interface Props {
-  onSearchText: (searchText: string) => void;
-}
-
-const SearchInput = ({ onSearchText }: Props) => {
-  const { colorMode } = useColorMode();
+const SearchInput = () => {
+  const setSearchText = useExerciseQueryStroe(s => s.setSearchText);
 
   const searchRef = useRef<HTMLInputElement>(null);
   return (
@@ -39,7 +35,7 @@ const SearchInput = ({ onSearchText }: Props) => {
         onSubmit={event => {
           event.preventDefault();
           if (searchRef !== null && searchRef.current?.value) {
-            onSearchText(searchRef.current.value);
+            setSearchText(searchRef.current.value.toLowerCase());
             searchRef.current.value = '';
           }
         }}
