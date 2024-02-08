@@ -1,25 +1,5 @@
-import { CanceledError } from 'axios';
-import { useState, useEffect } from 'react';
-import apiClient from '../services/api-client';
+import useData from './useData';
 
-const useBodyParts = () => {
-  const [bodyParts, setBodyParts] = useState<string[]>([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    apiClient
-      .get<string[]>('bodyPartList', { signal: controller.signal })
-      .then(res => setBodyParts(res.data))
-      .catch((err: Error) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-      });
-    return () => controller.abort();
-  }, []);
-
-  return { bodyParts, error };
-};
+const useBodyParts = () => useData<string>('/bodyPartList');
 
 export default useBodyParts;

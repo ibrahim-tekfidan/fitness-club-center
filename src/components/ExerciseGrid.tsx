@@ -3,7 +3,7 @@ import ExerciseCard from './ExerciseCard';
 import useExercises from '../hooks/useExercises';
 
 const ExerciseGrid = () => {
-  const { exercises, error } = useExercises();
+  const { data: exercises, error } = useExercises();
 
   if (error)
     return (
