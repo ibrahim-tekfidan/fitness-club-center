@@ -1,8 +1,9 @@
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import SearchInput from './components/SearchInput';
 import ExerciseGrid from './components/ExerciseGrid';
+import BodyPartSelector from './components/BodyPartSelector';
 
 const App = () => {
   return (
@@ -29,6 +30,9 @@ const App = () => {
       >
         <Hero />
         <SearchInput />
+        <Box mb={[3, 4, 5, 5]}>
+          <BodyPartSelector />
+        </Box>
         <ExerciseGrid />
       </GridItem>
       <GridItem area={'footer'}>Footer</GridItem>

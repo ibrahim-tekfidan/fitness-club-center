@@ -1,4 +1,4 @@
-import { Text, SimpleGrid, Center } from '@chakra-ui/react';
+import { Text, SimpleGrid, Center, Box } from '@chakra-ui/react';
 import ExerciseCard from './ExerciseCard';
 import useExercises from '../hooks/useExercises';
 
