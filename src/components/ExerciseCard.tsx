@@ -6,6 +6,8 @@ import {
   HStack,
   Badge,
   Divider,
+  VStack,
+  Flex,
 } from '@chakra-ui/react';
 import { Exercise } from '../hooks/useExercises';
 
@@ -28,11 +30,8 @@ const ExerciseCard = ({ exercise }: Props) => {
     >
       <Image src={exercise.gifUrl} />
       <Divider />
-      <CardBody>
+      <CardBody overflow={'auto'}>
         <HStack>
-          <Badge paddingX={2} borderRadius={6} mb={[1, 2, 3]} colorScheme="red">
-            {exercise.target}
-          </Badge>
           <Badge
             paddingX={2}
             borderRadius={6}
@@ -40,6 +39,9 @@ const ExerciseCard = ({ exercise }: Props) => {
             colorScheme="blue"
           >
             {exercise.bodyPart}
+          </Badge>
+          <Badge paddingX={2} borderRadius={6} mb={[1, 2, 3]} colorScheme="red">
+            {exercise.target}
           </Badge>
         </HStack>
         <Heading

@@ -8,6 +8,11 @@ export interface Exercise {
   target: string;
 }
 
-const useExercises = () => useData<Exercise>('');
+const useExercises = (selectedBodyPart = '') => {
+  if (selectedBodyPart)
+    return useData<Exercise>(`/bodyPart/${selectedBodyPart}`, selectedBodyPart);
+
+  return useData<Exercise>('', selectedBodyPart);
+};
 
 export default useExercises;

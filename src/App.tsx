@@ -4,8 +4,11 @@ import Hero from './components/Hero';
 import SearchInput from './components/SearchInput';
 import ExerciseGrid from './components/ExerciseGrid';
 import BodyPartSelector from './components/BodyPartSelector';
+import { useState } from 'react';
 
 const App = () => {
+  const [selectedBodyPart, setBodyPart] = useState('');
+
   return (
     <Grid
       templateAreas={{
@@ -31,9 +34,12 @@ const App = () => {
         <Hero />
         <SearchInput />
         <Box mb={[3, 4, 5, 5]}>
-          <BodyPartSelector />
+          <BodyPartSelector
+            selectedBodyPart={selectedBodyPart}
+            onBodyPart={setBodyPart}
+          />
         </Box>
-        <ExerciseGrid />
+        <ExerciseGrid selectedBodyPart={selectedBodyPart} />
       </GridItem>
       <GridItem area={'footer'}>Footer</GridItem>
     </Grid>

@@ -2,8 +2,12 @@ import { Text, SimpleGrid, Center, Box } from '@chakra-ui/react';
 import ExerciseCard from './ExerciseCard';
 import useExercises from '../hooks/useExercises';
 
-const ExerciseGrid = () => {
-  const { data: exercises, error } = useExercises();
+interface Props {
+  selectedBodyPart: string;
+}
+
+const ExerciseGrid = ({ selectedBodyPart }: Props) => {
+  const { data: exercises, error } = useExercises(selectedBodyPart);
 
   if (error)
     return (
@@ -13,7 +17,7 @@ const ExerciseGrid = () => {
     );
 
   return (
-    <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={[4, 6, 8, 8]}>
+    <SimpleGrid columns={[1, 2, 3, 4]} spacing={[4, 6, 8, 8]}>
       {exercises?.map(exercise => (
         <ExerciseCard exercise={exercise} key={exercise.id} />
       ))}
