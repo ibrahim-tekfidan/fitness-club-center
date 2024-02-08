@@ -10,6 +10,7 @@ import SearchInput from './components/SearchInput';
 const App = () => {
   const [selectedBodyPart, setBodyPart] = useState('');
   const [selectedEquipment, setEquipment] = useState('');
+  const [searchText, setSearchText] = useState('');
 
   return (
     <Grid
@@ -34,7 +35,7 @@ const App = () => {
         area={'main'}
       >
         <Hero />
-        <SearchInput />
+        <SearchInput onSearchText={setSearchText} />
         <Stack
           display={'flex'}
           flexDirection={{ base: 'column', md: 'row' }}
@@ -51,6 +52,7 @@ const App = () => {
           />
         </Stack>
         <ExerciseGrid
+          searchText={searchText}
           selectedEquipment={selectedEquipment}
           selectedBodyPart={selectedBodyPart}
         />

@@ -5,7 +5,6 @@ import apiClient from '../services/api-client';
 const useData = <T>(endpoint: string, deps?: string) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState('');
-  console.log(deps);
 
   useEffect(() => {
     const controller = new AbortController();

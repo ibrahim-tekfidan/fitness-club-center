@@ -8,7 +8,11 @@ export interface Exercise {
   target: string;
 }
 
-const useExercises = (selectedBodyPart = '', selectedEquipment = '') => {
+const useExercises = (
+  selectedBodyPart = '',
+  selectedEquipment = '',
+  searchText = ''
+) => {
   if (selectedBodyPart)
     return useData<Exercise>(`/bodyPart/${selectedBodyPart}`, selectedBodyPart);
   if (selectedEquipment)
@@ -16,6 +20,7 @@ const useExercises = (selectedBodyPart = '', selectedEquipment = '') => {
       `/equipment/${selectedEquipment}`,
       selectedEquipment
     );
+  if (searchText) return useData<Exercise>(`/name/${searchText}`, searchText);
 
   return useData<Exercise>('', selectedBodyPart);
 };

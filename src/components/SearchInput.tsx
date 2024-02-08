@@ -10,7 +10,11 @@ import {
   InputLeftElement,
 } from '@chakra-ui/react';
 
-const SearchInput = () => {
+interface Props {
+  onSearchText: (searchText: string) => void;
+}
+
+const SearchInput = ({ onSearchText }: Props) => {
   const searchRef = useRef<HTMLInputElement>(null);
   return (
     <Box
@@ -29,7 +33,7 @@ const SearchInput = () => {
         onSubmit={event => {
           event.preventDefault();
           if (searchRef !== null && searchRef.current?.value) {
-            console.log(searchRef.current.value);
+            onSearchText(searchRef.current.value);
             searchRef.current.value = '';
           }
         }}
