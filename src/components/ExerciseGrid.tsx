@@ -4,10 +4,14 @@ import useExercises from '../hooks/useExercises';
 
 interface Props {
   selectedBodyPart: string;
+  selectedEquipment: string;
 }
 
-const ExerciseGrid = ({ selectedBodyPart }: Props) => {
-  const { data: exercises, error } = useExercises(selectedBodyPart);
+const ExerciseGrid = ({ selectedBodyPart, selectedEquipment }: Props) => {
+  const { data: exercises, error } = useExercises(
+    selectedBodyPart,
+    selectedEquipment
+  );
 
   if (error)
     return (

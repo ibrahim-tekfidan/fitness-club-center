@@ -1,13 +1,15 @@
-import { Box, Grid, GridItem } from '@chakra-ui/react';
-import NavBar from './components/NavBar';
-import Hero from './components/Hero';
-import SearchInput from './components/SearchInput';
-import ExerciseGrid from './components/ExerciseGrid';
-import BodyPartSelector from './components/BodyPartSelector';
+import { Grid, GridItem, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
+import BodyPartSelector from './components/BodyPartSelector';
+import EquipmentSelector from './components/EquipmentSelector';
+import ExerciseGrid from './components/ExerciseGrid';
+import Hero from './components/Hero';
+import NavBar from './components/NavBar';
+import SearchInput from './components/SearchInput';
 
 const App = () => {
   const [selectedBodyPart, setBodyPart] = useState('');
+  const [selectedEquipment, setEquipment] = useState('');
 
   return (
     <Grid
@@ -33,13 +35,25 @@ const App = () => {
       >
         <Hero />
         <SearchInput />
-        <Box mb={[3, 4, 5, 5]}>
+        <Stack
+          display={'flex'}
+          flexDirection={{ base: 'column', md: 'row' }}
+          spacing={{ base: 2, md: 4 }}
+          mb={[3, 4, 5, 5]}
+        >
           <BodyPartSelector
             selectedBodyPart={selectedBodyPart}
             onBodyPart={setBodyPart}
           />
-        </Box>
-        <ExerciseGrid selectedBodyPart={selectedBodyPart} />
+          <EquipmentSelector
+            onEquipment={setEquipment}
+            selectedEquipment={selectedEquipment}
+          />
+        </Stack>
+        <ExerciseGrid
+          selectedEquipment={selectedEquipment}
+          selectedBodyPart={selectedBodyPart}
+        />
       </GridItem>
       <GridItem area={'footer'}>Footer</GridItem>
     </Grid>
