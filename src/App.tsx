@@ -1,4 +1,4 @@
-import { Grid, GridItem, Stack } from '@chakra-ui/react';
+import { Button, Grid, GridItem, HStack, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
 import BodyPartSelector from './components/BodyPartSelector';
 import EquipmentSelector from './components/EquipmentSelector';
@@ -6,6 +6,7 @@ import ExerciseGrid from './components/ExerciseGrid';
 import Hero from './components/Hero';
 import NavBar from './components/NavBar';
 import SearchInput from './components/SearchInput';
+import FilterHeading from './components/FilterHeading';
 
 export interface ExerciseQuery {
   selectedBodyPart: string | null;
@@ -50,7 +51,9 @@ const App = () => {
             })
           }
         />
+        <FilterHeading exerciseQuery={exerciseQuery} />
         <Stack
+          marginTop={[1, 2, 3, 4]}
           display={'flex'}
           flexDirection={{ base: 'column', md: 'row' }}
           spacing={{ base: 2, md: 4 }}
@@ -76,6 +79,19 @@ const App = () => {
             }
             selectedEquipment={exerciseQuery.selectedEquipment}
           />
+          <Button
+            colorScheme="blue"
+            size={{ base: 'md', lg: 'lg' }}
+            onClick={() =>
+              setExerciseQuery({
+                selectedBodyPart: '',
+                selectedEquipment: '',
+                searchText: '',
+              })
+            }
+          >
+            Reset Filter
+          </Button>
         </Stack>
         <ExerciseGrid exerciseQuery={exerciseQuery} />
       </GridItem>

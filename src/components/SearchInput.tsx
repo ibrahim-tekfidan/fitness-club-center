@@ -8,6 +8,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  useColorMode,
 } from '@chakra-ui/react';
 
 interface Props {
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const SearchInput = ({ onSearchText }: Props) => {
+  const { colorMode } = useColorMode();
+
   const searchRef = useRef<HTMLInputElement>(null);
   return (
     <Box
@@ -23,9 +26,12 @@ const SearchInput = ({ onSearchText }: Props) => {
       paddingY={['48px', '80px', '96px', '128px']}
     >
       <Heading
+        bgGradient={'linear(to-r, #2B6CB0, #90CDF4)'}
+        bgClip="text"
         fontSize={['xl', '2xl', '3xl', '4xl']}
         textAlign={'center'}
-        mb={['16px', '24px', '32px', '32px']}
+        mt={['32px', '48px', '64px', '64px']}
+        mb={['16px', '24px', '24px', '24px']}
       >
         Awesome Exercise You Should Know
       </Heading>

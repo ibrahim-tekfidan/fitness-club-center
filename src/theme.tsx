@@ -7,7 +7,7 @@ const config: ThemeConfig = {
 const theme = extendTheme({
   config,
   colors: {
-    white: '#f7f7f7',
+    white: '#F7FAFC',
   },
 });
 
