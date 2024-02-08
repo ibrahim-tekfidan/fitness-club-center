@@ -1,11 +1,10 @@
-import { Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
-import useBodyParts from '../hooks/useBodyParts';
 import bodyParts from '../data/bodyParts';
 
 interface Props {
   onBodyPart: (bodyPart: string) => void;
-  selectedBodyPart: string;
+  selectedBodyPart: string | null;
 }
 
 const BodyPartSelector = ({ onBodyPart, selectedBodyPart }: Props) => {
@@ -19,7 +18,7 @@ const BodyPartSelector = ({ onBodyPart, selectedBodyPart }: Props) => {
         as={Button}
         rightIcon={<BsChevronDown />}
       >
-        {selectedBodyPart.toUpperCase() || 'Body Part'}
+        {selectedBodyPart?.toUpperCase() || 'Body Part'}
       </MenuButton>
       <MenuList>
         {bodyParts.map(bodyPart => (

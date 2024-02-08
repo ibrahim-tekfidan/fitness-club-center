@@ -7,10 +7,16 @@ import Hero from './components/Hero';
 import NavBar from './components/NavBar';
 import SearchInput from './components/SearchInput';
 
+export interface ExerciseQuery {
+  selectedBodyPart: string | null;
+  selectedEquipment: string | null;
+  searchText: string | null;
+}
+
 const App = () => {
-  const [selectedBodyPart, setBodyPart] = useState('');
-  const [selectedEquipment, setEquipment] = useState('');
-  const [searchText, setSearchText] = useState('');
+  const [exerciseQuery, setExerciseQuery] = useState<ExerciseQuery>(
+    {} as ExerciseQuery
+  );
 
   return (
     <Grid
@@ -35,7 +41,15 @@ const App = () => {
         area={'main'}
       >
         <Hero />
-        <SearchInput onSearchText={setSearchText} />
+        <SearchInput
+          onSearchText={searchText =>
+            setExerciseQuery({
+              selectedBodyPart: '',
+              selectedEquipment: '',
+              searchText,
+            })
+          }
+        />
         <Stack
           display={'flex'}
           flexDirection={{ base: 'column', md: 'row' }}
@@ -43,19 +57,27 @@ const App = () => {
           mb={[3, 4, 5, 5]}
         >
           <BodyPartSelector
-            selectedBodyPart={selectedBodyPart}
-            onBodyPart={setBodyPart}
+            selectedBodyPart={exerciseQuery?.selectedBodyPart}
+            onBodyPart={selectedBodyPart =>
+              setExerciseQuery({
+                selectedBodyPart,
+                selectedEquipment: '',
+                searchText: '',
+              })
+            }
           />
           <EquipmentSelector
-            onEquipment={setEquipment}
-            selectedEquipment={selectedEquipment}
+            onEquipment={selectedEquipment =>
+              setExerciseQuery({
+                selectedBodyPart: '',
+                selectedEquipment,
+                searchText: '',
+              })
+            }
+            selectedEquipment={exerciseQuery.selectedEquipment}
           />
         </Stack>
-        <ExerciseGrid
-          searchText={searchText}
-          selectedEquipment={selectedEquipment}
-          selectedBodyPart={selectedBodyPart}
-        />
+        <ExerciseGrid exerciseQuery={exerciseQuery} />
       </GridItem>
       <GridItem area={'footer'}>Footer</GridItem>
     </Grid>

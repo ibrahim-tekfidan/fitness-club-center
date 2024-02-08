@@ -1,32 +1,23 @@
-import { Text, SimpleGrid, Center, Box } from '@chakra-ui/react';
-import ExerciseCard from './ExerciseCard';
+import { SimpleGrid } from '@chakra-ui/react';
+import { ExerciseQuery } from '../App';
 import useExercises from '../hooks/useExercises';
 import ErrorMessage from './ErrorMessage';
+import ExerciseCard from './ExerciseCard';
 
 interface Props {
-  selectedBodyPart: string;
-  selectedEquipment: string;
-  searchText: string;
+  exerciseQuery: ExerciseQuery;
 }
 
-const ExerciseGrid = ({
-  selectedBodyPart,
-  selectedEquipment,
-  searchText,
-}: Props) => {
-  const { data: exercises, error } = useExercises(
-    selectedBodyPart,
-    selectedEquipment,
-    searchText
-  );
+const ExerciseGrid = ({ exerciseQuery }: Props) => {
+  const { data: exercises, error } = useExercises(exerciseQuery);
 
   if (error) return;
 
   if (exercises.length === 0)
     return (
       <ErrorMessage>
-        No results found for '{searchText}' 😔. Please make sure you entered the
-        exercise name correctly 🥳.
+        No results found for '{exerciseQuery.searchText}' 😔. Please make sure
+        you entered the exercise name correctly 🥳.
       </ErrorMessage>
     );
 

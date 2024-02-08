@@ -2,7 +2,7 @@ import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
 
-const useData = <T>(endpoint: string, deps?: string) => {
+const useData = <T>(endpoint: string, deps?: string | null) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState('');
 

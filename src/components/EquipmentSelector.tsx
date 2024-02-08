@@ -1,10 +1,9 @@
 import { Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
 import equipments from '../data/Equipments';
-import useEquipments from '../hooks/useEquipments';
 
 interface Props {
-  selectedEquipment: string;
+  selectedEquipment: string | null;
   onEquipment: (equipment: string) => void;
 }
 
