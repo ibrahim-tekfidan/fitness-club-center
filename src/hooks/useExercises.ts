@@ -10,8 +10,8 @@ export interface Exercise {
   target: string;
 }
 
-const useExercises = () => {
-  const { bodyPart, equipment, searchText } = useExerciseQueryStroe(
+const useExercises = (pageSize: number) => {
+  const { bodyPart, equipment, searchText, page } = useExerciseQueryStroe(
     s => s.exerciseQuery
   );
 
@@ -21,8 +21,16 @@ const useExercises = () => {
   if (searchText) endpoint = `/name/${searchText}`;
 
   return useQuery<Exercise[], Error>({
-    queryKey: endpoint ? ['exercises', endpoint] : ['exercises'],
-    queryFn: () => apiClient.get<Exercise[]>(endpoint).then(res => res.data),
+    queryKey: endpoint || page ? ['exercises', endpoint, page] : ['exercises'],
+    queryFn: () =>
+      apiClient
+        .get<Exercise[]>(endpoint, {
+          params: {
+            offset: (page - 1) * pageSize,
+            limit: pageSize,
+          },
+        })
+        .then(res => res.data),
     staleTime: 24 * 60 * 60 * 1000, //24h
   });
 };

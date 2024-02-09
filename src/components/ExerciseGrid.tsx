@@ -1,12 +1,15 @@
-import { SimpleGrid } from '@chakra-ui/react';
+import { Center, SimpleGrid, Spinner } from '@chakra-ui/react';
 import useExercises from '../hooks/useExercises';
 import useExerciseQueryStroe from '../store';
 import ErrorMessage from './ErrorMessage';
 import ExerciseCard from './ExerciseCard';
+import Pagination from './Pagination';
 
 const ExerciseGrid = () => {
+  const pageSize = 20;
+  const { data: exercises, error, isLoading } = useExercises(pageSize);
+  const hasNextPage = exercises !== undefined && exercises.length === pageSize;
   const searchText = useExerciseQueryStroe(s => s.exerciseQuery.searchText);
-  const { data: exercises, error, isLoading } = useExercises();
 
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
@@ -19,11 +22,19 @@ const ExerciseGrid = () => {
     );
 
   return (
-    <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={[3, 4, 5, 6]}>
-      {exercises?.map(exercise => (
-        <ExerciseCard exercise={exercise} key={exercise.id} />
-      ))}
-    </SimpleGrid>
+    <>
+      {isLoading && (
+        <Center paddingY={'128px'}>
+          <Spinner size={'xl'} />
+        </Center>
+      )}
+      <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={[3, 4, 5, 6]}>
+        {exercises?.map(exercise => (
+          <ExerciseCard exercise={exercise} key={exercise.id} />
+        ))}
+      </SimpleGrid>
+      <Pagination hasNextPage={hasNextPage} isLoading={isLoading} />
+    </>
   );
 };
 

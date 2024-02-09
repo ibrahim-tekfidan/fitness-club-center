@@ -4,6 +4,7 @@ export interface ExerciseQuery {
   bodyPart?: string | null;
   equipment?: string | null;
   searchText?: string | null;
+  page: number;
 }
 
 interface ExerciseQueryStore {
@@ -11,17 +12,19 @@ interface ExerciseQueryStore {
   setBodyPart: (bodyPart: string) => void;
   setEquipment: (equipment: string) => void;
   setSearchText: (searchText: string) => void;
+  setPage: (number: number) => void;
   reset: () => void;
 }
 
 const useExerciseQueryStroe = create<ExerciseQueryStore>(set => ({
-  exerciseQuery: {},
+  exerciseQuery: { page: 1 },
   setSearchText: searchText =>
     set(store => ({
       exerciseQuery: {
         searchText,
         bodyPart: '',
         equipment: '',
+        page: 1,
       },
     })),
   setBodyPart: bodyPart =>
@@ -30,6 +33,7 @@ const useExerciseQueryStroe = create<ExerciseQueryStore>(set => ({
         bodyPart,
         equipment: '',
         searchText: '',
+        page: 1,
       },
     })),
   setEquipment: equipment =>
@@ -38,6 +42,14 @@ const useExerciseQueryStroe = create<ExerciseQueryStore>(set => ({
         bodyPart: '',
         equipment,
         searchText: '',
+        page: 1,
+      },
+    })),
+  setPage: number =>
+    set(store => ({
+      exerciseQuery: {
+        ...store.exerciseQuery,
+        page: store.exerciseQuery.page + number,
       },
     })),
   reset: () =>
@@ -46,6 +58,7 @@ const useExerciseQueryStroe = create<ExerciseQueryStore>(set => ({
         bodyPart: '',
         equipment: '',
         searchText: '',
+        page: 1,
       },
     })),
 }));
