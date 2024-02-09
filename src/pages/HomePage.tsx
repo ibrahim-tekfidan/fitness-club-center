@@ -4,7 +4,6 @@ import EquipmentSelector from '../components/EquipmentSelector';
 import ExerciseGrid from '../components/ExerciseGrid';
 import FilterHeading from '../components/FilterHeading';
 import Hero from '../components/Hero';
-import NavBar from '../components/NavBar';
 import ResetFilters from '../components/ResetFilters';
 import SearchInput from '../components/SearchInput';
 

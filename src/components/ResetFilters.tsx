@@ -7,7 +7,7 @@ const ResetFilters = () => {
   return (
     <Button
       colorScheme="blue"
-      size={{ base: 'md', lg: 'lg' }}
+      size={{ base: 'sm', md: 'md', lg: 'lg' }}
       onClick={() => reset()}
     >
       Reset Filters

@@ -11,12 +11,12 @@ const EquipmentSelector = () => {
   return (
     <Menu>
       <MenuButton
-        size={{ base: 'md', lg: 'lg' }}
+        size={{ base: 'sm', md: 'md', lg: 'lg' }}
         colorScheme="blue"
         as={Button}
         rightIcon={<BsChevronDown />}
       >
-        {equipment || 'Equipment'}
+        {equipment?.toUpperCase() || 'Equipment'}
       </MenuButton>
       <MenuList>
         {equipments?.map(equipment => (

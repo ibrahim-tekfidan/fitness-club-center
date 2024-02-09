@@ -4,7 +4,7 @@ export default axios.create({
   baseURL: 'https://exercisedb.p.rapidapi.com/exercises',
   params: { limit: '20' },
   headers: {
-    'X-RapidAPI-Key': '99d3113895mshb768def262656fbp1fae32jsn6420b847ca49',
+    'X-RapidAPI-Key': 'a6b5070abcmsh4b90b2e47e48e05p117a30jsn5e39f9635645',
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
   },
 });

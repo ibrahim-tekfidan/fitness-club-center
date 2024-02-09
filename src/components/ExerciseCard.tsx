@@ -1,16 +1,14 @@
 import {
-  Image,
   Card,
   CardBody,
-  Heading,
-  HStack,
-  Badge,
   Divider,
-  VStack,
-  Flex,
+  Heading,
+  Image,
+  Stack,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { Exercise } from '../hooks/useExercises';
-import { Link, NavLink } from 'react-router-dom';
+import CategoryBadge from './CategoryBadge';
 
 interface Props {
   exercise: Exercise;
@@ -18,49 +16,37 @@ interface Props {
 
 const ExerciseCard = ({ exercise }: Props) => {
   return (
-    <Link to={`/exercise/${exercise.id}`}>
-      <Card
-        cursor={'pointer'}
-        _hover={{
-          transform: 'scale(1.03)',
-          transition: 'transform .15s ease-in',
-          boxShadow: 'lg',
-        }}
-        boxShadow={'md'}
-        borderRadius={10}
-        overflow={'hidden'}
-      >
+    <Card
+      cursor={'pointer'}
+      _hover={{
+        transform: 'scale(1.03)',
+        transition: 'transform .15s ease-in',
+        boxShadow: 'lg',
+      }}
+      boxShadow={'md'}
+      borderRadius={10}
+      overflow={'hidden'}
+    >
+      <Link to={`/exercise/${exercise.id}`}>
         <Image src={exercise.gifUrl} />
         <Divider />
         <CardBody overflow={'auto'}>
-          <HStack>
-            <Badge
-              paddingX={2}
-              borderRadius={6}
-              mb={[1, 2, 3]}
-              colorScheme="blue"
-            >
-              {exercise.bodyPart}
-            </Badge>
-            <Badge
-              paddingX={2}
-              borderRadius={6}
-              mb={[1, 2, 3]}
-              colorScheme="red"
-            >
-              {exercise.target}
-            </Badge>
-          </HStack>
+          <Stack display={'flex'} flexDirection={{ base: 'column', md: 'row' }}>
+            <CategoryBadge color={'blue'}>{exercise.bodyPart}</CategoryBadge>
+            <CategoryBadge color="red">{exercise.target}</CategoryBadge>
+          </Stack>
+          <Divider mt={[1, 2, 3, 3]} />
           <Heading
-            paddingTop={2}
+            paddingTop={[3, 4, 5, 5]}
             textTransform={'uppercase'}
-            fontSize={['lg', 'lg', 'xl', 'xl']}
+            fontSize={['sm', 'md', 'lg', 'lg']}
+            fontWeight={{ base: 600, md: 700 }}
           >
             {exercise.name}
           </Heading>
         </CardBody>
-      </Card>
-    </Link>
+      </Link>
+    </Card>
   );
 };
 

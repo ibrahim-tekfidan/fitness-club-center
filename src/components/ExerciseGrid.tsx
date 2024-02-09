@@ -19,7 +19,7 @@ const ExerciseGrid = () => {
     );
 
   return (
-    <SimpleGrid columns={[1, 2, 3, 4]} spacing={[4, 6, 8, 8]}>
+    <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={[3, 4, 5, 6]}>
       {exercises?.map(exercise => (
         <ExerciseCard exercise={exercise} key={exercise.id} />
       ))}
