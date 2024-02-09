@@ -1,19 +1,22 @@
 import {
   Box,
   Center,
+  HStack,
   Heading,
   Image,
   ListItem,
   OrderedList,
   SimpleGrid,
+  VStack,
   useColorMode,
 } from '@chakra-ui/react';
-
 import { useParams } from 'react-router-dom';
-import ExerciseKeyWords from '../components/ExerciseKeyWords';
 import useExercise from '../hooks/useExercise';
+import bodyPartLogo from '../assets/icons/body-part.png';
+import targetLogo from '../assets/icons/target.png';
+import equipmentPartLogo from '../assets/icons/equipment.png';
 
-const ExerciseDetailsPage = () => {
+export const ExerciseDetailsPage = () => {
   const { id } = useParams();
   const { data: exercise } = useExercise(id!);
   const { colorMode } = useColorMode();
@@ -32,7 +35,7 @@ const ExerciseDetailsPage = () => {
           mb={['16px', '20px', '24px', '32px']}
           fontSize={['xl', '3xl', '4xl', '5xl']}
         >
-          {exercise?.name.toUpperCase()}
+          {exercise?.name}
         </Heading>
 
         <OrderedList
@@ -45,7 +48,6 @@ const ExerciseDetailsPage = () => {
             <ListItem key={index}>{instruction}</ListItem>
           ))}
         </OrderedList>
-        <ExerciseKeyWords exercise={exercise!} />
       </Box>
       <Box>
         <Center>
@@ -59,5 +61,3 @@ const ExerciseDetailsPage = () => {
     </SimpleGrid>
   );
 };
-
-export default ExerciseDetailsPage;

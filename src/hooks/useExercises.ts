@@ -8,6 +8,9 @@ export interface Exercise {
   bodyPart: string;
   gifUrl: string;
   target: string;
+  equipment: string;
+  secondaryMuscles: string;
+  instructions: string[];
 }
 
 const useExercises = (pageSize: number) => {
