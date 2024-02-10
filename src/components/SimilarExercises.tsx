@@ -12,11 +12,15 @@ const SimilarExercises = () => {
   const { data, isLoading } = useExercisesBodyPart(
     searchParams.get('bodyPart')!
   );
-  const hasNextPage = data !== undefined && data.length === 20;
+  // const hasNextPage = data !== undefined && data.length === 20;
   const exercises = data?.slice((page - 1) * 4, page * 4);
+
+  const hasNextPage = page <= data?.length! / 5;
+
   return (
     <Box mt={[8, 10, 12, 24]}>
       <Heading
+        id="SimilarExercise"
         mb={['16px', '20px', '24px', '32px']}
         bgGradient={'linear(to-r, #2B6CB0, #90CDF4)'}
         bgClip="text"
@@ -34,6 +38,7 @@ const SimilarExercises = () => {
         ))}
       </SimpleGrid>
       <Pagination
+        elementId="SimilarExercise"
         page={page}
         onPage={(number: number) => setPage(p => p + number)}
         hasNextPage={hasNextPage}

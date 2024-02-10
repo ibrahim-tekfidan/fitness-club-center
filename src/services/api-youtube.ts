@@ -7,7 +7,7 @@ export default axios.create({
     gl: 'US',
   },
   headers: {
-    'X-RapidAPI-Key': '71436d376cmsh8ba3f5590934cafp11f2eajsn00986e02e042',
+    'X-RapidAPI-Key': '7768d3dbe0msh608aabc63d0f2adp1fc84ajsnf43120114826',
     'X-RapidAPI-Host': 'youtube-search-and-download.p.rapidapi.com',
   },
 });

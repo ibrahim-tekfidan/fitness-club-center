@@ -37,7 +37,12 @@ const Pagination = ({
         onClick={() => {
           hasNextPage && onPage(1);
           if (elementId && hasNextPage) {
-            const element = document.getElementById(elementId);
+            const element = document.getElementById(elementId!);
+            if (!isLoading) {
+              setTimeout(() => {
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }, 1000);
+            }
             element?.scrollIntoView({ behavior: 'smooth' });
           }
         }}
