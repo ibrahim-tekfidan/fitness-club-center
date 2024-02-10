@@ -36,6 +36,7 @@ const ExerciseGrid = () => {
         ))}
       </SimpleGrid>
       <Pagination
+        elementId={'FilterExercise'}
         page={page}
         onPage={setPage}
         hasNextPage={hasNextPage}

@@ -6,9 +6,16 @@ interface Props {
   onPage: (number: number) => void;
   hasNextPage: boolean;
   isLoading: boolean;
+  elementId?: string;
 }
 
-const Pagination = ({ page, onPage, hasNextPage, isLoading }: Props) => {
+const Pagination = ({
+  page,
+  onPage,
+  hasNextPage,
+  isLoading,
+  elementId,
+}: Props) => {
   return (
     <HStack justifyContent={'end'} spacing={[2, 3, 4]} marginTop={[3, 4, 5, 6]}>
       <Button
@@ -17,6 +24,10 @@ const Pagination = ({ page, onPage, hasNextPage, isLoading }: Props) => {
         disabled={page === 1}
         onClick={() => {
           page !== 1 && onPage(-1);
+          if (elementId && page !== 1) {
+            const element = document.getElementById(elementId);
+            element?.scrollIntoView({ behavior: 'smooth' });
+          }
         }}
       >
         &larr; Previous
@@ -25,6 +36,10 @@ const Pagination = ({ page, onPage, hasNextPage, isLoading }: Props) => {
         colorScheme="blue"
         onClick={() => {
           hasNextPage && onPage(1);
+          if (elementId && hasNextPage) {
+            const element = document.getElementById(elementId);
+            element?.scrollIntoView({ behavior: 'smooth' });
+          }
         }}
         size={{ base: 'sm', md: 'md', lg: 'lg' }}
       >

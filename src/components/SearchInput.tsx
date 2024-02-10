@@ -17,6 +17,7 @@ const SearchInput = () => {
   const searchRef = useRef<HTMLInputElement>(null);
   return (
     <Box
+      id="SearchExercise"
       margin={'0 auto'}
       width={'80%'}
       paddingY={['48px', '80px', '96px', '128px']}

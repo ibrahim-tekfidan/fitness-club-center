@@ -44,6 +44,11 @@ const Hero = () => {
           mt={['24px', '24px', '48px', '64px']}
           mb={{ base: '48px', md: '0' }}
           size={['sm', 'sm', 'md', 'lg']}
+          onClick={() =>
+            document
+              .getElementById('SearchExercise')
+              ?.scrollIntoView({ behavior: 'smooth' })
+          }
         >
           Search exercise &darr;
         </Button>

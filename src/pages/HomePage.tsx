@@ -15,18 +15,20 @@ const HomePage = () => {
     >
       <Hero />
       <SearchInput />
-      <FilterHeading />
-      <Stack
-        marginTop={[1, 2, 3, 4]}
-        display={'flex'}
-        flexDirection={{ base: 'column', md: 'row' }}
-        spacing={{ base: 2, md: 4 }}
-        mb={[3, 4, 5, 5]}
-      >
-        <BodyPartSelector />
-        <EquipmentSelector />
-        <ResetFilters />
-      </Stack>
+      <Box id="FilterExercise">
+        <FilterHeading />
+        <Stack
+          marginTop={[1, 2, 3, 4]}
+          display={'flex'}
+          flexDirection={{ base: 'column', md: 'row' }}
+          spacing={{ base: 2, md: 4 }}
+          mb={[3, 4, 5, 5]}
+        >
+          <BodyPartSelector />
+          <EquipmentSelector />
+          <ResetFilters />
+        </Stack>
+      </Box>
       <ExerciseGrid />
     </Box>
   );
