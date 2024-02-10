@@ -18,8 +18,6 @@ const SimilarExercises = ({ searchParams }: Props) => {
   );
   const hasNextPage = exercises !== undefined && exercises.length === pageSize;
 
-  console.log(page);
-
   return (
     <Box mt={[8, 10, 12, 24]}>
       <Heading
