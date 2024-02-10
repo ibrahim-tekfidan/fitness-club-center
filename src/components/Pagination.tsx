@@ -1,5 +1,5 @@
 import { Badge, Button, HStack } from '@chakra-ui/react';
-import useExerciseQueryStroe from '../store';
+import useExerciseQueryStore from '../store';
 
 interface Props {
   hasNextPage: boolean;
@@ -7,10 +7,8 @@ interface Props {
 }
 
 const Pagination = ({ hasNextPage, isLoading }: Props) => {
-  const page = useExerciseQueryStroe(s => s.exerciseQuery.page);
-  const setPage = useExerciseQueryStroe(s => s.setPage);
-
-  console.log('render', page);
+  const page = useExerciseQueryStore(s => s.exerciseQuery.page);
+  const setPage = useExerciseQueryStore(s => s.setPage);
 
   return (
     <HStack justifyContent={'end'} spacing={[2, 3, 4]} marginTop={[3, 4, 5, 6]}>

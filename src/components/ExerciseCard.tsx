@@ -27,7 +27,7 @@ const ExerciseCard = ({ exercise }: Props) => {
       borderRadius={10}
       overflow={'hidden'}
     >
-      <Link to={`/exercise/${exercise.id}`}>
+      <Link to={`/exercise/${exercise.id}?bodyPart=${exercise.bodyPart}`}>
         <Image src={exercise.gifUrl} />
         <Divider />
         <CardBody overflow={'auto'}>

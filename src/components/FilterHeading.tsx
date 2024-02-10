@@ -1,8 +1,8 @@
 import { Heading } from '@chakra-ui/react';
-import useExerciseQueryStroe from '../store';
+import useExerciseQueryStore from '../store';
 
 const FilterHeading = () => {
-  const { bodyPart, equipment, searchText } = useExerciseQueryStroe(
+  const { bodyPart, equipment, searchText } = useExerciseQueryStore(
     s => s.exerciseQuery
   );
 

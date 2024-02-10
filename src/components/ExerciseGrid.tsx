@@ -1,6 +1,6 @@
 import { Center, SimpleGrid, Spinner } from '@chakra-ui/react';
 import useExercises from '../hooks/useExercises';
-import useExerciseQueryStroe from '../store';
+import useExerciseQueryStore from '../store';
 import ErrorMessage from './ErrorMessage';
 import ExerciseCard from './ExerciseCard';
 import Pagination from './Pagination';
@@ -9,7 +9,7 @@ const ExerciseGrid = () => {
   const pageSize = 20;
   const { data: exercises, error, isLoading } = useExercises(pageSize);
   const hasNextPage = exercises !== undefined && exercises.length === pageSize;
-  const searchText = useExerciseQueryStroe(s => s.exerciseQuery.searchText);
+  const searchText = useExerciseQueryStore(s => s.exerciseQuery.searchText);
 
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 

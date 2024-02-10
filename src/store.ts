@@ -16,7 +16,7 @@ interface ExerciseQueryStore {
   reset: () => void;
 }
 
-const useExerciseQueryStroe = create<ExerciseQueryStore>(set => ({
+const useExerciseQueryStore = create<ExerciseQueryStore>(set => ({
   exerciseQuery: { page: 1 },
   setSearchText: searchText =>
     set(store => ({
@@ -63,4 +63,4 @@ const useExerciseQueryStroe = create<ExerciseQueryStore>(set => ({
     })),
 }));
 
-export default useExerciseQueryStroe;
+export default useExerciseQueryStore;

@@ -1,8 +1,8 @@
 import { Button } from '@chakra-ui/react';
-import useExerciseQueryStroe from '../store';
+import useExerciseQueryStore from '../store';
 
 const ResetFilters = () => {
-  const reset = useExerciseQueryStroe(s => s.reset);
+  const reset = useExerciseQueryStore(s => s.reset);
 
   return (
     <Button

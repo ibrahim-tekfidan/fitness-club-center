@@ -9,15 +9,14 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import ExerciseKeyWords from './ExerciseKeyWords';
-import useExercise from '../hooks/useExercise';
+import { Exercise } from '../hooks/useExercises';
 
 interface Props {
-  exerciseId: string;
+  exercise: Exercise;
 }
 
-const ExerciseInstructions = ({ exerciseId }: Props) => {
+const ExerciseInstructions = ({ exercise }: Props) => {
   const { colorMode } = useColorMode();
-  const { data: exercise } = useExercise(exerciseId!);
 
   return (
     <SimpleGrid alignItems={'center'} columns={{ base: 1, md: 2 }}>

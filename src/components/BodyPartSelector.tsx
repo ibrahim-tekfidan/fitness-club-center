@@ -1,12 +1,12 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
-import useExerciseQueryStroe from '../store';
+import useExerciseQueryStore from '../store';
 import useBodyParts from '../hooks/useBodyParts';
 
 const BodyPartSelector = () => {
   const { data: bodyParts } = useBodyParts();
-  const bodyPart = useExerciseQueryStroe(s => s.exerciseQuery.bodyPart);
-  const setBodyPart = useExerciseQueryStroe(s => s.setBodyPart);
+  const bodyPart = useExerciseQueryStore(s => s.exerciseQuery.bodyPart);
+  const setBodyPart = useExerciseQueryStore(s => s.setBodyPart);
 
   return (
     <Menu>

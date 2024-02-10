@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import apiClient from '../services/api-client';
-import useExerciseQueryStroe from '../store';
+import useExerciseQueryStore from '../store';
 
 export interface Exercise {
   id: number;
@@ -14,7 +14,7 @@ export interface Exercise {
 }
 
 const useExercises = (pageSize: number) => {
-  const { bodyPart, equipment, searchText, page } = useExerciseQueryStroe(
+  const { bodyPart, equipment, searchText, page } = useExerciseQueryStore(
     s => s.exerciseQuery
   );
 
