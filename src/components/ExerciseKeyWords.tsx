@@ -29,7 +29,7 @@ const ExerciseKeyWords = ({ exercise }: Props) => {
             fontSize={'32px'}
             color={colorMode === 'dark' ? '#90CDF4' : '#2B6CB0'}
           />
-          <Text fontSize={'xl'} fontWeight={600}>
+          <Text fontSize={{ base: 'md', md: 'xl' }} fontWeight={600}>
             {exercise?.equipment.toUpperCase()}
           </Text>
         </HStack>
@@ -38,7 +38,7 @@ const ExerciseKeyWords = ({ exercise }: Props) => {
             fontSize={'32px'}
             color={colorMode === 'dark' ? '#90CDF4' : '#2B6CB0'}
           />
-          <Text fontSize={'xl'} fontWeight={600}>
+          <Text fontSize={{ base: 'md', md: 'xl' }} fontWeight={600}>
             {exercise?.bodyPart.toUpperCase()}
           </Text>
         </HStack>
@@ -47,7 +47,7 @@ const ExerciseKeyWords = ({ exercise }: Props) => {
             fontSize={'32px'}
             color={colorMode === 'dark' ? '#90CDF4' : '#2B6CB0'}
           />
-          <Text fontSize={'xl'} fontWeight={600}>
+          <Text fontSize={{ base: 'md', md: 'xl' }} fontWeight={600}>
             {exercise?.target.toUpperCase()}
           </Text>
         </HStack>

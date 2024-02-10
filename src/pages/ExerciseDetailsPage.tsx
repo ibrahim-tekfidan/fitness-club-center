@@ -15,7 +15,7 @@ const ExerciseDetailsPage = () => {
       mt={['32px', '32px', '48px']}
     >
       <ExerciseInstructions exercise={exercise!} />
-      <SimilarExercises searchParams={searchParams} exercise={exercise} />
+      <SimilarExercises searchParams={searchParams} />
     </Box>
   );
 };

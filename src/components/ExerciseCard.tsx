@@ -26,6 +26,9 @@ const ExerciseCard = ({ exercise }: Props) => {
       boxShadow={'md'}
       borderRadius={10}
       overflow={'hidden'}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
     >
       <Link to={`/exercise/${exercise.id}?bodyPart=${exercise.bodyPart}`}>
         <Image src={exercise.gifUrl} />

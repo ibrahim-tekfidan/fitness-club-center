@@ -8,8 +8,10 @@ import Pagination from './Pagination';
 const ExerciseGrid = () => {
   const pageSize = 20;
   const { data: exercises, error, isLoading } = useExercises(pageSize);
-  const hasNextPage = exercises !== undefined && exercises.length === pageSize;
   const searchText = useExerciseQueryStore(s => s.exerciseQuery.searchText);
+  const page = useExerciseQueryStore(s => s.exerciseQuery.page);
+  const setPage = useExerciseQueryStore(s => s.setPage);
+  const hasNextPage = exercises !== undefined && exercises.length === pageSize;
 
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
@@ -33,7 +35,12 @@ const ExerciseGrid = () => {
           <ExerciseCard exercise={exercise} key={exercise.id} />
         ))}
       </SimpleGrid>
-      <Pagination hasNextPage={hasNextPage} isLoading={isLoading} />
+      <Pagination
+        page={page}
+        onPage={setPage}
+        hasNextPage={hasNextPage}
+        isLoading={isLoading}
+      />
     </>
   );
 };

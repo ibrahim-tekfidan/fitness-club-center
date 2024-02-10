@@ -1,15 +1,14 @@
 import { Badge, Button, HStack } from '@chakra-ui/react';
-import useExerciseQueryStore from '../store';
+import useExerciseQueryStroe from '../store';
 
 interface Props {
+  page: number;
+  onPage: (number: number) => void;
   hasNextPage: boolean;
   isLoading: boolean;
 }
 
-const Pagination = ({ hasNextPage, isLoading }: Props) => {
-  const page = useExerciseQueryStore(s => s.exerciseQuery.page);
-  const setPage = useExerciseQueryStore(s => s.setPage);
-
+const Pagination = ({ page, onPage, hasNextPage, isLoading }: Props) => {
   return (
     <HStack justifyContent={'end'} spacing={[2, 3, 4]} marginTop={[3, 4, 5, 6]}>
       <Button
@@ -17,7 +16,7 @@ const Pagination = ({ hasNextPage, isLoading }: Props) => {
         size={{ base: 'sm', md: 'md', lg: 'lg' }}
         disabled={page === 1}
         onClick={() => {
-          page !== 1 && setPage(-1);
+          page !== 1 && onPage(-1);
         }}
       >
         &larr; Previous
@@ -25,7 +24,7 @@ const Pagination = ({ hasNextPage, isLoading }: Props) => {
       <Button
         colorScheme="blue"
         onClick={() => {
-          hasNextPage && setPage(1);
+          hasNextPage && onPage(1);
         }}
         size={{ base: 'sm', md: 'md', lg: 'lg' }}
       >
