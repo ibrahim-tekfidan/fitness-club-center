@@ -9,7 +9,6 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import logo from '../assets/images/banner.jpg';
-import { color } from 'framer-motion';
 
 const Hero = () => {
   const { colorMode } = useColorMode();

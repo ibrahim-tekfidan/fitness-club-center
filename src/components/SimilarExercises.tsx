@@ -3,12 +3,11 @@ import useExercisesBodyPart from '../hooks/useExercisesBodyPart';
 import ExerciseCard from './ExerciseCard';
 import Pagination from './Pagination';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-interface Props {
-  searchParams: URLSearchParams;
-}
+const SimilarExercises = () => {
+  const [searchParams] = useSearchParams();
 
-const SimilarExercises = ({ searchParams }: Props) => {
   const [page, setPage] = useState(1);
   const pageSize = 5;
   const { data: exercises, isLoading } = useExercisesBodyPart(

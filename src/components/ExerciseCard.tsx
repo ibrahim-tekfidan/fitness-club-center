@@ -30,7 +30,9 @@ const ExerciseCard = ({ exercise }: Props) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }}
     >
-      <Link to={`/exercise/${exercise.id}?bodyPart=${exercise.bodyPart}`}>
+      <Link
+        to={`/exercise/${exercise.id}?bodyPart=${exercise.bodyPart}&exerciseName=${exercise.name}`}
+      >
         <Image src={exercise.gifUrl} />
         <Divider />
         <CardBody overflow={'auto'}>
