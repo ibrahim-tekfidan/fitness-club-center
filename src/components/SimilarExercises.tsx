@@ -9,14 +9,11 @@ const SimilarExercises = () => {
   const [searchParams] = useSearchParams();
 
   const [page, setPage] = useState(1);
-  const pageSize = 5;
-  const { data: exercises, isLoading } = useExercisesBodyPart(
-    searchParams.get('bodyPart')!,
-    pageSize,
-    page
+  const { data, isLoading } = useExercisesBodyPart(
+    searchParams.get('bodyPart')!
   );
-  const hasNextPage = exercises !== undefined && exercises.length === pageSize;
-
+  const hasNextPage = data !== undefined && data.length === 20;
+  const exercises = data?.slice((page - 1) * 4, page * 4);
   return (
     <Box mt={[8, 10, 12, 24]}>
       <Heading
@@ -31,7 +28,7 @@ const SimilarExercises = () => {
           <Spinner size={'xl'} />
         </Center>
       )}
-      <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={[3, 4, 5, 6]}>
+      <SimpleGrid columns={[2, 2, 3, 4, 4]} spacing={[3, 4, 5, 6]}>
         {exercises?.map(exercise => (
           <ExerciseCard key={exercise.id} exercise={exercise} />
         ))}

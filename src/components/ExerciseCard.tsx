@@ -31,7 +31,7 @@ const ExerciseCard = ({ exercise }: Props) => {
       }}
     >
       <Link
-        to={`/exercise/${exercise.id}?bodyPart=${exercise.bodyPart}&exerciseName=${exercise.name}`}
+        to={`/exercise/${exercise.id}?bodyPart=${exercise.bodyPart}&target=${exercise.target}&exerciseName=${exercise.name}`}
       >
         <Image src={exercise.gifUrl} />
         <Divider />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useVideos from '../hooks/useVideos';
 import {
@@ -15,18 +15,17 @@ import {
   HStack,
   VStack,
 } from '@chakra-ui/react';
-import { BsLink45Deg } from 'react-icons/bs';
-import ExerciseCard from './ExerciseCard';
 import Pagination from './Pagination';
 
 const ExerciseVideos = () => {
   const [searchParams] = useSearchParams();
   const exerciseName = searchParams.get('exerciseName')!;
-  const { data, isLoading } = useVideos(exerciseName);
+  const target = searchParams.get('target')!;
+  const { data, isLoading } = useVideos(`${target} ${exerciseName}`);
 
   const [page, setPage] = useState(1);
 
-  const videos = data?.contents.slice((page - 1) * 4, page * 4);
+  const videos = data?.contents.slice((page - 1) * 2, page * 2);
 
   return (
     <Box mt={[8, 10, 12, 24]}>
@@ -42,7 +41,8 @@ const ExerciseVideos = () => {
           <Spinner size={'xl'} />
         </Center>
       )}
-      <SimpleGrid columns={[2, 2, 3, 4]} spacing={[3, 4, 5, 6]}>
+
+      <SimpleGrid columns={[1, 1, 2, 2]} spacing={[3, 4, 5, 6]}>
         {videos?.map(({ video }, index) =>
           video ? (
             <Card
@@ -58,9 +58,10 @@ const ExerciseVideos = () => {
               overflow={'hidden'}
             >
               <iframe
-                height={'250px'}
+                height={'350px'}
                 src={`https://www.youtube.com/embed/${video.videoId}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture "
+                allowFullScreen
               ></iframe>
               <CardBody>
                 <Link
@@ -94,7 +95,7 @@ const ExerciseVideos = () => {
       <Pagination
         page={page}
         onPage={(number: number) => setPage(p => p + number)}
-        hasNextPage={page < 5}
+        hasNextPage={page < 10}
         isLoading={isLoading}
       />
     </Box>
