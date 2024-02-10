@@ -1,33 +1,26 @@
 import {
-  Box,
-  Center,
-  HStack,
-  Heading,
-  Image,
-  ListItem,
-  OrderedList,
   SimpleGrid,
-  VStack,
+  Image,
+  Heading,
+  OrderedList,
+  ListItem,
+  Center,
+  Box,
   useColorMode,
 } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
+import ExerciseKeyWords from './ExerciseKeyWords';
 import useExercise from '../hooks/useExercise';
-import bodyPartLogo from '../assets/icons/body-part.png';
-import targetLogo from '../assets/icons/target.png';
-import equipmentPartLogo from '../assets/icons/equipment.png';
 
-export const ExerciseDetailsPage = () => {
-  const { id } = useParams();
-  const { data: exercise } = useExercise(id!);
+interface Props {
+  exerciseId: string;
+}
+
+const ExerciseInstructions = ({ exerciseId }: Props) => {
   const { colorMode } = useColorMode();
-  console.log(exercise);
+  const { data: exercise } = useExercise(exerciseId!);
+
   return (
-    <SimpleGrid
-      paddingX={['16px', '20px', '24px', '32px']}
-      mt={['32px', '32px', '48px']}
-      alignItems={'center'}
-      columns={{ base: 1, md: 2 }}
-    >
+    <SimpleGrid alignItems={'center'} columns={{ base: 1, md: 2 }}>
       <Box>
         <Heading
           bgGradient={'linear(to-r, #2B6CB0, #90CDF4)'}
@@ -35,7 +28,7 @@ export const ExerciseDetailsPage = () => {
           mb={['16px', '20px', '24px', '32px']}
           fontSize={['xl', '3xl', '4xl', '5xl']}
         >
-          {exercise?.name}
+          {exercise?.name.toUpperCase()}
         </Heading>
 
         <OrderedList
@@ -48,6 +41,7 @@ export const ExerciseDetailsPage = () => {
             <ListItem key={index}>{instruction}</ListItem>
           ))}
         </OrderedList>
+        <ExerciseKeyWords exercise={exercise!} />
       </Box>
       <Box>
         <Center>
@@ -61,3 +55,5 @@ export const ExerciseDetailsPage = () => {
     </SimpleGrid>
   );
 };
+
+export default ExerciseInstructions;
