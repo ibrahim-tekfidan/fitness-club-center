@@ -26,17 +26,16 @@ const Hero = () => {
           mb={['16px', '20px', '24px', '32px']}
           fontSize={['xl', '3xl', '4xl', '5xl']}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Shape Your Form with Professional Exercise Techniques!
         </Heading>
         <Text
           color={colorMode === 'dark' ? 'gray.400' : 'gray.600'}
           fontSize={['md', 'md', 'lg', 'xl']}
           paddingBottom={{ lg: '32px' }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          soluta neque quo illum eaque impedit qui, cumque cupiditate voluptas
-          hic dolor. Reiciendis beatae aut aspernatur praesentium laborum ex
-          eveniet facere?
+          Discover precise and effective exercise techniques crafted by experts
+          on our website. Shape your body confidently and progress with proper
+          methods. Take the first step towards a healthy lifestyle today!
         </Text>
         <Button
           colorScheme="blue"
