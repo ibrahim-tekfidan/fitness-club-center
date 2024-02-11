@@ -16,6 +16,7 @@ const Footer = () => {
     <VStack padding={[3, 4, 5, 6]}>
       <HStack justifyContent={'space-between'}>
         <Link
+          title="Developer gmail adress"
           target="_blank"
           bgColor={colorMode === 'dark' ? 'blue.900' : 'blue.100'}
           padding={3}
@@ -31,6 +32,7 @@ const Footer = () => {
           <SiGmail />
         </Link>
         <Link
+          title="Developr Linkedin adress"
           target="_blank"
           bgColor={colorMode === 'dark' ? 'blue.900' : 'blue.100'}
           padding={3}

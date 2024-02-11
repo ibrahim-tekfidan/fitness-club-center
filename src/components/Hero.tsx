@@ -8,7 +8,7 @@ import {
   Text,
   useColorMode,
 } from '@chakra-ui/react';
-import logo from '../assets/images/banner.jpg';
+import logo from '../assets/banner.webp';
 
 const Hero = () => {
   const { colorMode } = useColorMode();
@@ -56,6 +56,7 @@ const Hero = () => {
           borderRadius={'10px'}
           width={['50%', '50%', '80%', '63%']}
           src={logo}
+          alt="Man doing sports photo"
         />
       </Center>
       <Text

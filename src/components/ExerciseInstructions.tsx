@@ -48,6 +48,7 @@ const ExerciseInstructions = () => {
             borderRadius={'10px'}
             width={['50%', '50%', '80%', '63%']}
             src={exercise?.gifUrl}
+            alt={`${exercise?.name} gif`}
           />
         </Center>
       </Box>

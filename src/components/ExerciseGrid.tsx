@@ -18,8 +18,8 @@ const ExerciseGrid = () => {
   if (exercises?.length === 0 && searchText?.length !== 0)
     return (
       <ErrorMessage>
-        No results found for '{searchText}' 😔. Please make sure you entered the
-        exercise name correctly 🥳.
+        No results found for '{searchText}'. Please make sure you entered the
+        exercise name correctly.
       </ErrorMessage>
     );
 

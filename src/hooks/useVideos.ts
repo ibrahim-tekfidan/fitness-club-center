@@ -25,6 +25,7 @@ const useVideos = (query: string) => {
           },
         })
         .then(res => res.data),
+    staleTime: 24 * 60 * 60 * 1000, //24h
   });
 };
 

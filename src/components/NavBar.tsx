@@ -1,6 +1,6 @@
 import { Box, HStack, Image } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../assets/images/Logo4.png';
+import logo from '../assets/Logo.webp';
 import ColorModeSwitch from './ColorModeSwitch';
 
 const NavBar = () => {
@@ -15,11 +15,12 @@ const NavBar = () => {
       justifyContent={'space-between'}
     >
       <Box>
-        <Link to={'/'} style={{ fontWeight: '700' }}>
+        <Link to={'/'} style={{ fontWeight: '700' }} title="Home page">
           <Image
             borderRadius={'10px'}
             width={['64px', '80px', '96px']}
             src={logo}
+            alt="Fitness club logo"
           />
         </Link>
       </Box>

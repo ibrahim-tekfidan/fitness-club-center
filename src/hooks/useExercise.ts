@@ -7,6 +7,7 @@ const useExercise = (id: string) => {
     queryKey: ['exercise', id],
     queryFn: () =>
       apiClient.get<Exercise>('/exercise/' + id).then(res => res.data),
+    staleTime: 24 * 60 * 60 * 1000, //24h
   });
 };
 

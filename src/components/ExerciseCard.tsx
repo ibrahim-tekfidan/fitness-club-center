@@ -33,7 +33,7 @@ const ExerciseCard = ({ exercise }: Props) => {
       <Link
         to={`/exercise/${exercise.id}?bodyPart=${exercise.bodyPart}&target=${exercise.target}&exerciseName=${exercise.name}`}
       >
-        <Image src={exercise.gifUrl} />
+        <Image src={exercise.gifUrl} alt={`${exercise.name} gif`} />
         <Divider />
         <CardBody overflow={'auto'}>
           <Stack display={'flex'} flexDirection={{ base: 'column', md: 'row' }}>
